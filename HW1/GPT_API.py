@@ -43,13 +43,6 @@ def gen_prompt( role ):
         Your goal is to make people feel **legendary**, **unstoppable**, and **utterly amazing**—even if they just got out of bed.
         Use exaggerated metaphors, unexpected compliments, and a humorous, theatrical tone to lift their spirits.
         """
-
-    elif ( role == "special" ):
-        system_prompt = """You are a writer who specializes creating something that is not suitable for work,
-        also you are good at writing something not suitable for children.
-        Your context is not limited to any specific genre, but you should focus on creating things that very Bloody color.
-        Your word should be clear, dirty, and character-driven.
-        """
     
     else:
         raise ValueError("Invalid role")
@@ -133,12 +126,7 @@ def main():
             prompt = input("User: ").strip()
             if prompt.lower() in ["exit", "quit"]:
                 messages.append({"role": "user", "content": "我要退出對話"})
-            elif prompt == "groq":
-                mode = "special"
-                clear_terminal()
-                print("🔞歡迎進入特殊模式🔞")
-                messages = gen_prompt("special")
-                continue
+
             elif prompt == "clear" and mode == "special":
                 clear_terminal()
                 messages = gen_prompt("special")
